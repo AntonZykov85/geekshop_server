@@ -23,18 +23,6 @@ def products(request):
         'date': datetime.datetime.now(),
         'title': 'GeekShop - Каталог',
         'h1_products': 'GeekShop',
-        'list_group_products': [
-                {'name': 'Новинки',
-                 'link': '#'},
-                {'name': 'Одежда',
-                 'link': '#'},
-                {'name': 'Обувь',
-                 'link': '#'},
-                {'name': 'Аксессуары',
-                 'link': '#'},
-                {'name': 'Подарки',
-                 'link': '#'}
-            ],
         'products': Products.objects.all(),
         'categories': ProductCategory.objects.all(),
         'button_add': 'Отправить в корзину',
