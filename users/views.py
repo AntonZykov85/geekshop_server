@@ -5,6 +5,10 @@ from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.contrib import messages
 from baskets.models import Basket
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from users.models import User
 
 
 
@@ -26,6 +30,12 @@ def login(request):
     return render(request, 'users/login.html', context)
 
 
+#class RegistrationCreateView(CreateView):
+ #   model = User
+#    form_class = UserRegistrationForm
+ #   success_url = reverse_lazy('users:registration')
+  #  template_name = 'users/registration.html'
+
 def registration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)
@@ -43,6 +53,13 @@ def registration(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+#class ProfileUpdateView(UpdateView): я попробовал делать классы, но что-то пошло не так.
+#    model = User
+#    form_class = UserProfileForm
+ #   success_url = reverse_lazy('users:profile')
+ #   template_name = 'users/profile.html'
 
 
 @login_required
